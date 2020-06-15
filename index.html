@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Moira Players</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0 font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h2 {
+      font-family: cursive;
+      color: #003d79;
+    }
+p{font-family:Arial;
+  font-size:15px
+  }
+label constitution:{font-family: cursive;
+color: #003d79;
+
+}
+    .navbar {
+      overflow: hidden;
+      background-color: #003d79;
+      border-radius: 25px;
+    }
+
+    .navbar a {
+      float: left;
+      font-size: 30px;
+      color: white;
+      text-align: center;
+      padding: 40px 16px;
+      text-decoration: none;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 30px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 15px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #c3c3c3;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #003d79;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Full-width input fields */
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* Add a background color when the inputs get focus */
+    input[type=text]:focus,
+    input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for all buttons */
+    button {
+      background-color: #ee2f5a;
+      color: white;
+      padding: 36px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+      font-size: 30px;
+      border-radius: 25px;
+    }
+
+    button:hover {
+      opacity: 1;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+      padding: 14px 20px;
+      background-color: #f44336;
+    }
+
+    /* Float cancel and signup buttons and add an equal width */
+    .cancelbtn,
+    .signupbtn {
+      float: left;
+      width: 50%;
+    }
+
+    /* Add padding to container elements */
+    .container {
+      padding: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: #003d79;
+      padding-top: 50px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto;
+      /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+    }
+
+    /* Style the horizontal ruler */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+
+    /* The Close Button (x) */
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 15px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #f1f1f1;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #f44336;
+      cursor: pointer;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    /* Change styles for cancel button and signup button on extra small screens */
+    @media screen and (max-width: 300px) {
+
+      .cancelbtn,
+      .signupbtn {
+        width: 100%;
+      }
+    }
+
+    /*socialmedia*/
+    .footer {
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 50px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+    }
+
+    .fa:hover {
+      opacity: 0.7;
+    }
+
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+    }
+
+    .fa-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+
+    .fa-linkedin {
+      background: #007bb5;
+      color: white;
+    }
+
+    .fa-youtube {
+      background: #bb0000;
+      color: white;
+    }
+
+    .fa-instagram {
+      background: #125688;
+      color: white;
+    }
+
+    div.gallery {
+      margin: 5px;
+      border: 1px solid #ccc;
+      float: left;
+      width: 180px;
+    }
+
+    div.gallery:hover {
+      border: 1px solid #777;
+    }
+
+    div.gallery img {
+      width: 100%;
+      height: auto;
+    }
+
+    div.desc {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 55%;
+    }
+
+    /*slideshow*/
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 2.5s;
+      animation-name: fade;
+      animation-duration: 2.5s;
+    }
+
+    @-webkit-keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .text {
+        font-size: 11px
+      }
+    }
+    }
+
+    /*photo gallery*/
+    div.gallery {
+      margin: 5px;
+      border: 1px solid #ccc;
+      float: left;
+      width: 180px;
+      box-sizing: content-box;
+    }
+
+    div.gallery:hover {
+      border: 1px solid #777;
+    }
+
+    div.gallery img {
+      width: 100%;
+      height: auto;
+    }
+
+    div.desc {
+      padding: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="images/MoiraPLogo.png" alt="MoiraPlayersLogo" class="center">
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#news">About Us</a>
+    <a href="https://www.ticketsource.co.uk/moiraplayers/events" target="_blank">Ticket Sales</a>
+    <a href="#gallery">Previous Shows</a>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Registration</button>
+
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content" action="/action_page.php">
+        <div class="container">
+          <h1>Registration</h1>
+          <p>Please fill in this form to register</p>
+          <label for="name"><b>Full Name</b></label>
+          <input type="text" placeholder="Enter name" name="name" required>
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+          <label for="address"><b>Address</b></label>
+          <input type="text" placeholder="Enter Address" name="address" required>
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <label for="mobile"><b>Mobile Number</b></label>
+          <input type="text" placeholder="Enter Mobile Number" name="mobile" required>
+          <label for="age"><b>Age Range</b></label>
+          <p>Please select your age:</p>
+          <input type="radio" id="age1" name="age" value="18-25">
+          <label for="age1">18-25</label><br>
+          <input type="radio" id="age2" name="age" value="25-35">
+          <label for="age2">25-35</label><br>
+          <input type="radio" id="age3" name="age" value="35-45">
+          <label for="age3">35-45</label><br>
+          <input type="radio" id="age4" name="age" value="45-55">
+          <label for="age4">45-55</label><br>
+          <input type="radio" id="age5" name="age" value="55+">
+          <label for="age5">55+</label><br><br>
+          <label for="medical"><b>Any Medical Issues</b></label>
+          <input type="text" placeholder="Enter Medical Issues" name="medical" required><br>
+          <label for="experience"><b>Describe any experience (or ambitions) you have in the field of theatre</b></label>
+          <input type="text" placeholder="Enter experience" name="experience" required><br>
+          <p>Your particular areas of interest (Please tick the appropriate box or boxes)</p>
+          <input type="checkbox" name="1" value="acting">
+          <label for="1"> Acting</label>
+          <input type="checkbox" name="2" value="directing">
+          <label for="2"> Directing</label>
+          <input type="checkbox" name="3" value="technical" <label for="3"> Technical</label>
+          <input type="checkbox" name="4" value="wardrobe" <label for="4"> Wardrobe</label>
+          <input type="checkbox" name="5" value="sound" <label for="5"> Sound</label>
+          <input type="checkbox" name="6" value="choreography" <label for="6"> Choreography</label>
+          <input type="checkbox" name="7" value="stage" <label for="7"> Stage Design</label>
+          <input type="checkbox" name="8" value="social" <label for="8">Social</label>
+          <input type="checkbox" name="9" value="ticket" <label for="9">Ticket Sales</label>
+          <input type="checkbox" name="10" value="committee" <label for="10"> Committee</label>
+          <input type="checkbox" name="11" value="refreshments" <label for="11"> Refreshments</label><br><br><br>
+          <label for="involve"><b>Which other theatre organisation(s) are you - or have you been - involved with?/<b></label>
+          <input type="text" placeholder="Enter Which other theatre organisation(s) are you - or have you been - involved with?" name="involve" required><br>
+          <label for="why"><b>Why would you like to join the Moira Players?/<b></label>
+          <input type="text" placeholder="Why would you like to join the Moira Players?" name="other" required><br>
+          <label for="other"><b>Please mention any other relevant details - for example, interests, skills or hobbies that
+              might be relevant
+              /<b></label>
+          <input type="text" placeholder="Please mention any other relevant details" name="other" required><br>
+          <h3>DECLARATION</h3>
+          <p>Please complete the following declaration (deleting where appropriate):</p>
+          <p>1. I hereby apply to be accepted as a FULL / ASSOCIATE member.<label for="yes"></label>
+            <input type="checkbox" name="yes" value="yes" <label for="yes">YES</label><label for="no"></label>
+            <input type="checkbox" name="no" value="no" <label for="no">NO</label></p>
+          <p>2. I undertake to read observe the following documents as detailed on the Company’s website (www.moiraplayers.com)<br>
+            <label for="constitution"></label><input type="checkbox" name="constitution" value="constitution" <label for="constitution">Constitution</label>
+            <label for="code"></label><input type="checkbox" name="code" value="code" <label for="code">Code of Conduct</label>
+            <label for="safe"></label><input type="checkbox" name="safe" value="code" <label for="safe">Safeguarding Policy
+            </label>
+          <p>3. I understand that under GDPR 2016 legislation the personal information provided on this form will only be accessed for the purposes of company business such as sending newsletters, contacting casts about auditions and social events. I
+            have indicated below my permission for my information to be published on a membership list available to all members of the company. I give permission that photography is vital for marketing the individual shows and there give permission
+            for my photo only for these purposes as used</p>
+          <p>4. I give permission for the following data to be circulated to company members:
+            <label for="name"></label><br>
+            <input type="checkbox" name="name" value="name" <label for="name">NAME</label><label for="name"></label><br>
+            <input type="checkbox" name="phone" value="phone" <label for="phone">PHONE(for what's app purposes)</label><label for="phone"></label><br>
+            <input type="checkbox" name="mail" value="mail" <label for="mail">EMAIL</label><label for="mail"></label><br>
+            <input type="checkbox" name="photo" value="photo" <label for="photo">Photographs(This is only for marketing the shows)</label><label for="photo"></label><br>
+            <input type="checkbox" name="photo1" value="photo1" <label for="photo1">Photographs (This is only for specific whatsapp groups)
+            </label><label for="photo1"></label>
+          </p>
+          <p>5. Should any of my details change I will inform the MoiraPlayers Secretary.</p>
+          <p>Signed........................</p>
+          <p>Dated.........................</P>
+
+          <p>By registering with Moira Players you agree to our <span style="color:red;font-size:15px">Terms & Privacy</span></p>
+          <div class="clearfix"><br>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Sign Up</button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      // Get the modal
+      var modal = document.getElementById('id01');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+
+    <div class="dropdown">
+      <button class="dropbtn">What's On
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="https://www.starsinthehouse.com/">Summer Festival</a>
+        <a href="https://dublintheatrefestival.ie/programme">One Act Festival</a>
+        <a href="https://www.goh.co.uk/whats-on/beauty-and-the-beast/">Pantomime</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="images\fairies.png" style="width:100%">
+
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="images\Cinderella.png" style="width:100%">
+
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="images\WizardofOzCast.jpg" style="width:100%">
+
+    </div>
+  </div>
+  <br>
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+  </script>
+
+  <hr size="20">
+  <h2>About Us</h2>
+  <p> Being an artist is often a vulnerable path. You make something so deeply personal and then present it to the world with an open heart. Not everyone is so fearless.
+    It is with great sadness and regret that we announce that the proposed 'Summer Play' will be cancelled
+    We do this so we can play our part in combating the spread of CV19 amongst our members and our community
+    We take this unprecedented action with heavy hearts. The closure of theatres and other cultural venues will have a very real and devastating impact on the theatre industry and arts community as a whole. Cancelling the upcoming performance means
+    that our Moira Player members will not audition for our Summer play nor will rehearsals take place. These are strange and uncertain times for us all but if we can help prevent the spread of this virus then this is the most important action we can
+    take for the members and our society.
+    We urge you all to take care of yourselves; to self-isolate if required and to stay healthy. We look forward to welcoming you back soon . In the meantime, take care, stay safe...look after your health and see you soon.
+
+  </p>
+  <p>I sincerely hope that you and your family are in good health.</p>
+
+  <p>You may have heard in the news last week about the enormous challenges facing theatres and artists, which was highlighted by a Stormont committee on the arts. The stark reality is that theatres are going to be one of the last to get back on
+    their feet as a result of this pandemic. Even when we are permitted to re-open, for example, Moira Players may only be able to hold less than one-fifth of our usual audiences with social distancing. Starting up again relies upon you, our
+    audience, because our income through ticketsales. With our audience numbers capped, we are going to need much more public subsidy to survive and thrive.
+  </p>
+  <p>
+    The pandemic has brought the curtain down on every theatre and arts venue in Northern Ireland, where the industry was struggling to keep its head above water even before the virus struck, and there are real fears that some of the smaller theatres
+    never re-open. Moira Players is a volunteering community based group – a massive and hidden workforce – athat get together to bring entertainment to our local community. There’s an entire army of people behind our shows who spend many hours
+    putting the production together. We have to come together to formulate a strategy and a recovery plan to provide critical support during this time, and ultimately to bring all our shows and the community back to life.</p>
+  </p>
+  <p>
+    The role of arts and health is well documented, and the arts will play a vital role in helping our society recover and heal after this pandemic. We see that already during the lockdown as people read books, listen to music and watch films to help
+    them get through.We look forward to working with you on our recovery plan, on how we can re-build and re-open. We need to think carefully about the tone and manner of how we will open again, to ensure we are doing it with sensitivity and respect,
+    imagination and creativity.</p>
+
+  <hr size="20">
+  <h2>Previous Shows</h2>
+  <div class="gallery">
+    <a target="_blank" href="images\OneAct2017.png">
+      <img src="images\OneAct2017.png" alt="OneAct2017" width="300" height="200">
+    </a>
+  </div>
+
+  <div class="gallery">
+    <a target="_blank" href="images\WidowsParadise.png">
+      <img src="images\WidowsParadise.png" alt="Widows" width="300" height="200">
+    </a>
+  </div>
+  <div class="gallery">
+    <a target="_blank" href="images\CinderellaPoster.png">
+      <img src="images\CinderellaPoster.png" alt="Cinderella" width="300" height="200">
+    </a>
+  </div>
+  <div class="gallery">
+    <a target="_blank" href="images\DontTellTheWife.png">
+      <img src="images\DontTellTheWife.png" alt="DontTellTheWife" width="300" height="200">
+    </a>
+  </div>
+  <div class="gallery">
+    <a target="_blank" href="images\OneAct2019.png">
+      <img src="images\OneAct2019.png" alt="OneAct2019" width="300" height="200">
+    </a>
+  </div>
+
+  <div class="gallery">
+    <a target="_blank" href="images\WizardPoster.png">
+      <img src="images\WizardPoster.png" alt="WizardPoster" width="300" height="200">
+    </a>
+  </div>
+  <div class="gallery">
+    <a target="_blank" href="images\ThankYou.png">
+      <img src="images\ThankYou.png" alt="ThankYou" width="300" height="200">
+    </a>
+  </div>
+
+  <hr size="20">
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+  <hr size="20">
+  <h2>Moira Players Documents</h2>
+  <label for="constitution">Constitution</label>
+  <input type="file" id="consitution" name"constitution">
+  <br><br>
+  <label for="constitution">Code of Conduct</label>
+  <input type="file" id="codeofconduct" name"codeofconduct">
+  <br><br>
+  <label for="safegaurding">Safe Guarding policy</label>
+  <input type="file" id="safegaurding" name"safegaurding">
+  <hr size="20">
+  <div class=footer>
+    <h2>Where to find Moira Players on Social Media</h2>
+    <a href="http://www.facebook.com/Moira-Players-374333863073382" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    <a href="#" class="fa fa-linkedin"></a>
+    <a href="http://youtu.be/vyDRbx8nWFg" class="fa fa-youtube"></a>
+    <a href="https://www.instagram.com/p/B9_rNwFh4gF/" class="fa fa-instagram"></a>
+  </div>
+</body>
+
+</html>
